@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_FrontLayout.cshtml";
+}
+
+<h2>Profile</h2>
+
+
+
+
+@*<body style=" display:flex;">
+    <p>Abzac</p>
+        <p>*</p>*@
+@*@{ WebImage photo = null;
+            var newFileName = "";
+            var imagePath = "";
+
+            if (IsPost)
+            {
+                photo = WebImage.GetImageFromRequest();
+                if (photo != null)
+                {
+                    newFileName = Guid.NewGuid().ToString() + "_" +
+                        Path.GetFileName(photo.FileName);
+                    imagePath = @"images" + newFileName;
+
+                    photo.Save(@"~" + imagePath);
+                }
+            }
+        }
+
+        <form action="" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend> Upload Image </legend>
+                <label for="Image">Image</label>
+                <input type="file" name="Image" />
+                <br />
+                <input type="submit" value="Upload" />
+            </fieldset>
+        </form>
+        <h1>Uploaded Image</h1>
+        @if (imagePath != "")
+        {
+            <div class="result">
+                <img src="@imagePath" alt="image" />
+
+            </div>
+        }
+    </body>*@
+
+
+<div class="menuMobile">
+    <ul>
+        @if (Session["MemberId"] != null)
+        {
+            <li>Hello @(Request.Cookies["MemberName"] != null && !string.IsNullOrEmpty(Request.Cookies["MemberName"].Value) ? Request.Cookies["MemberName"].Value : "User")</li>
+            <li>Email: @(Request.Cookies["EmailId"] != null && !string.IsNullOrEmpty(Request.Cookies["EmailId"].Value) ? Request.Cookies["EmailId"].Value : "EmailId")</li>
+            <li>Last name: @(Request.Cookies["LastName"] != null && !string.IsNullOrEmpty(Request.Cookies["LastName"].Value) ? Request.Cookies["LastName"].Value : "LastName")</li>
+            <li>Image: @(Request.Cookies["ImagePersone"] != null && !string.IsNullOrEmpty(Request.Cookies["ImagePersone"].Value) ? Request.Cookies["ImagePersone"].Value : "ImagePersone")</li>
+
+        }
+        else
+        {
+            <li><a href="javascript:void(0)" class="loginpopup">Login</a></li>
+            <li><a href="/account/register">Sign Up</a></li>
+        }
+    </ul>
+</div>
